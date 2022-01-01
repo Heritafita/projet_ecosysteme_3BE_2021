@@ -27,7 +27,7 @@ namespace projet.Implementation.Animaux.Herbivores
 
 
 
-        public Mouton( double age, double masse, double PointVie, int ReserveEnergie, Genre Sexe, Position position) :
+        public Mouton( double age, double masse, double PointVie, int ReserveEnergie, Genre Sexe, ILocalisation position) :
             base(age, masse, PointVie, ReserveEnergie, Sexe, position)
         {
         }

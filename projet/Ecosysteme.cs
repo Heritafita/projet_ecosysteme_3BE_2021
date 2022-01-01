@@ -6,16 +6,22 @@ using System.Linq;
 
 
 namespace projet
-{
+{ 
     public class Ecosysteme : ISimulateur, IFouillable, INotifiable
     {
+        private readonly IAfficheur _afficheur;
+
+        public Ecosysteme(IAfficheur afficheur)
+        {
+            _afficheur = afficheur;
+        }
         private IList<IElement> Elements { get; } = new List<IElement>();
 
         public void AjouterElement(IElement element)
         {
             element.Ecosysteme = this;
             Elements.Add(element);            
-            Note.Afficher($"Rajout ({element.GetType().Name}), Nombre d'éléments dans écosystème = {Elements.Count}", ConsoleColor.DarkGreen);            
+            _afficheur.Afficher($"Rajout ({element.GetType().Name}), Nombre d'éléments dans écosystème = {Elements.Count}", ConsoleColor.DarkGreen);            
         }
         private void SupprimerElement(IElement element)
         {
@@ -26,7 +32,7 @@ namespace projet
                 animal.FinirCycle();
 
             Elements.Remove(element);
-            Note.Afficher($"Suppression ({element.GetType().Name}), Nombre d'éléments restant dans l'écosystème = {Elements.Count}", ConsoleColor.DarkRed);
+            _afficheur.Afficher($"Suppression ({element.GetType().Name}), Nombre d'éléments restant dans l'écosystème = {Elements.Count}", ConsoleColor.DarkRed);
         }
 
         public void Simuler()
@@ -40,7 +46,7 @@ namespace projet
                 }
             }
 
-            Note.Afficher("AUCUN ELEMENT DANS L'ECOSYSTEME, FIN", ConsoleColor.Green);
+            _afficheur.Afficher("AUCUN ELEMENT DANS L'ECOSYSTEME, FIN", ConsoleColor.Green);
         }
 
         public IEnumerable<IElement> Chercher(Type type, Predicate<IElement> predicate = null)
@@ -59,7 +65,7 @@ namespace projet
             {
                 if (sender is Animal animal)
                 {                    
-                    Note.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);                    
+                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);                    
 
                 }
 
@@ -69,7 +75,7 @@ namespace projet
             {
                 if (sender is EtreVivant etreVivant)
                 {
-                    Note.Afficher($"{etreVivant.Name} ({etreVivant.GetType().Name}) a perdu une vie, Point de vie actuelle = {etreVivant.PointVie} {etreVivant.Position}", ConsoleColor.DarkYellow);
+                    _afficheur.Afficher($"{etreVivant.Name} ({etreVivant.GetType().Name}) a perdu une vie, Point de vie actuelle = {etreVivant.PointVie} {etreVivant.Position}", ConsoleColor.DarkYellow);
                     
                 }
 
@@ -80,7 +86,7 @@ namespace projet
 
                 if (sender is EtreVivant etrevivant)
                 {                    
-                    Note.Afficher($"({etrevivant.GetType().Name}) {etrevivant.Name} a genere PointVie, PointVie = {etrevivant.PointVie}, Energie restant= {etrevivant.ReserveEnergie}  { etrevivant.Position}", ConsoleColor.Gray);                    
+                    _afficheur.Afficher($"({etrevivant.GetType().Name}) {etrevivant.Name} a genere PointVie, PointVie = {etrevivant.PointVie}, Energie restant= {etrevivant.ReserveEnergie}  { etrevivant.Position}", ConsoleColor.Gray);                    
                 }
 
 
@@ -95,8 +101,8 @@ namespace projet
 
                     DechetOrganique dechetOrganique = new DechetOrganique( 0, sender.Masse, sender.Position);                 
 
-                    Note.Afficher($"({sender.GetType().Name}) {sender.Name} s'est tranformé en dechet organique {sender.Position}");
-                    Note.Afficher($"Dechet organique {dechetOrganique.Name} a ete cree, position : {dechetOrganique.Position}");
+                    _afficheur.Afficher($"({sender.GetType().Name}) {sender.Name} s'est tranformé en dechet organique {sender.Position}", ConsoleColor.DarkYellow);
+                    _afficheur.Afficher($"Dechet organique {dechetOrganique.Name} a ete cree, position : {dechetOrganique.Position}", ConsoleColor.DarkYellow);
                     AjouterElement(dechetOrganique);
                 }
 
@@ -104,13 +110,13 @@ namespace projet
 
                 if (sender is DechetOrganique dechetOrganique1)
                 {
-                    Note.Afficher($"Dechet organique {dechetOrganique1.Name} a disparu {dechetOrganique1.Position}", ConsoleColor.DarkYellow);
+                    _afficheur.Afficher($"Dechet organique {dechetOrganique1.Name} a disparu {dechetOrganique1.Position}", ConsoleColor.DarkYellow);
                 }
 
                 if (sender is Animal animal)
                 {
                     Viande viande = new Viande( 0, animal.Masse, animal.Position);                    
-                    Note.Afficher($"({animal.GetType().Name}) {animal.Name} n'est plus en vie et transformé en {viande.GetType().Name} {viande.Name} {viande.Position} ", ConsoleColor.DarkYellow);
+                    _afficheur.Afficher($"({animal.GetType().Name}) {animal.Name} n'est plus en vie et transformé en {viande.GetType().Name} {viande.Name} {viande.Position} ", ConsoleColor.DarkYellow);
                     AjouterElement(viande);
                 }
 
@@ -124,7 +130,7 @@ namespace projet
             {
                 if (sender is EtreVivant mangeur && notification.Element is EtreVivant aliment)
                 {
-                    Note.Afficher($"({aliment.GetType().Name}){aliment.Name} a ete mangé par {mangeur.GetType().Name} {mangeur.Name} {mangeur.Position}", ConsoleColor.DarkMagenta);
+                    _afficheur.Afficher($"({aliment.GetType().Name}){aliment.Name} a ete mangé par {mangeur.GetType().Name} {mangeur.Name} {mangeur.Position}", ConsoleColor.DarkMagenta);
                     SupprimerElement(aliment);
                     mangeur.PointVie += 2;
 
@@ -132,7 +138,7 @@ namespace projet
 
                 if (sender is Plante PlanteMangeur && notification.Element is DechetOrganique dechetAliment)
                 {                    
-                    Note.Afficher($"({dechetAliment.GetType().Name}) {dechetAliment.Name} a ete mangé par {PlanteMangeur.GetType().Name} {PlanteMangeur.Name} {PlanteMangeur.Position}", ConsoleColor.DarkMagenta);                    
+                    _afficheur.Afficher($"({dechetAliment.GetType().Name}) {dechetAliment.Name} a ete mangé par {PlanteMangeur.GetType().Name} {PlanteMangeur.Name} {PlanteMangeur.Position}", ConsoleColor.DarkMagenta);                    
                     SupprimerElement(dechetAliment);
                     PlanteMangeur.PointVie += 1;
                 }
@@ -146,10 +152,10 @@ namespace projet
                 if (sender is Animal animalMale && notification.Element is Animal animalfemelle)
                 {
 
-                    Note.Afficher($"({animalMale.GetType().Name}) male {animalMale.Name} et femelle {animalfemelle.Name} en contact pour repoduction", ConsoleColor.DarkCyan);
+                    _afficheur.Afficher($"({animalMale.GetType().Name}) male {animalMale.Name} et femelle {animalfemelle.Name} en contact pour repoduction", ConsoleColor.DarkCyan);
 
                     animalfemelle.CommenceGestation();
-                    Note.Afficher($"({animalfemelle.GetType().Name}) femelle {animalfemelle.Name} est en gestation {animalfemelle.Position}", ConsoleColor.DarkGray);
+                    _afficheur.Afficher($"({animalfemelle.GetType().Name}) femelle {animalfemelle.Name} est en gestation {animalfemelle.Position}", ConsoleColor.DarkGray);
 
                 }
             }
@@ -160,13 +166,13 @@ namespace projet
 
                 {
                     enfant.IsEnfant = true;                    
-                    Note.Afficher($"La mere ({mere.GetType().Name}) {mere.genre} {enfant.Name} a donne naissance\n Le bebe {enfant.GetType().Name} {enfant.genre} {enfant.Name} est ne " , ConsoleColor.DarkYellow);                    
+                    _afficheur.Afficher($"La mere ({mere.GetType().Name}) {mere.genre} {enfant.Name} a donne naissance\n Le bebe {enfant.GetType().Name} {enfant.genre} {enfant.Name} est ne " , ConsoleColor.DarkYellow);                    
                 }
 
                 if (sender is Plante MerePlante && notification.Element is Plante enfantPlante)
 
                 {                    
-                    Note.Afficher($"({MerePlante.GetType().Name}) {MerePlante.Name} s'est repandu {MerePlante.Position} \n ({enfantPlante.GetType().Name})  {enfantPlante.Name} a pousse {enfantPlante.Position}", ConsoleColor.DarkYellow);                    
+                    _afficheur.Afficher($"({MerePlante.GetType().Name}) {MerePlante.Name} s'est repandu {MerePlante.Position} \n ({enfantPlante.GetType().Name})  {enfantPlante.Name} a pousse {enfantPlante.Position}", ConsoleColor.DarkYellow);                    
                 }
                 AjouterElement(notification.Element);
             }
@@ -175,15 +181,7 @@ namespace projet
         public IElement ChercheUn(Type type, Predicate<IElement> predicate)
             => Chercher(type, predicate).FirstOrDefault();
 
-        public static class Note
-        {
-            public static void Afficher(string message, ConsoleColor color = ConsoleColor.White)
-            {
-                Console.ForegroundColor = color;
-                Console.WriteLine(message);
-                Console.ResetColor();
-            }
-        }
+       
     }
 }
 
@@ -197,4 +195,20 @@ public interface IFouillable
 {
     IEnumerable<IElement> Chercher(Type type, Predicate<IElement> predicate);
     IElement ChercheUn(Type type, Predicate<IElement> predicate);
+}
+
+public class Note : IAfficheur
+{
+    public  void Afficher(string message, ConsoleColor color = ConsoleColor.White)
+    {
+        Console.ForegroundColor = color;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
+}
+
+public interface IAfficheur
+{
+    public void Afficher(string message, ConsoleColor color = ConsoleColor.White);
+
 }

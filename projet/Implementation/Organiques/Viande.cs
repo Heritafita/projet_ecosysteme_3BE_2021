@@ -8,7 +8,7 @@ namespace projet.Implementation.Organiques
         const double TempsPourrir = 10;
 
 
-        public Viande( double age, double masse, Position position) : base( age, masse, position)
+        public Viande( double age, double masse, ILocalisation position) : base( age, masse, position)
         {
 
         }

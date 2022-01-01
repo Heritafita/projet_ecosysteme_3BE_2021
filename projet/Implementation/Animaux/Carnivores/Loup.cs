@@ -27,13 +27,14 @@ namespace projet.Implementation.Animaux.Carnivores
 
 
 
-        public Loup( double age, double masse, double PointVie, int ReserveEnergie, Genre genre, Position position) : base(age, masse, PointVie, ReserveEnergie, genre, position)
+        public Loup( double age, double masse, double PointVie, int ReserveEnergie, Genre genre, ILocalisation position) : base(age, masse, PointVie, ReserveEnergie, genre, position)
         {
         }
 
         protected override Animal Enfanter()
         {
-            return new Loup(0, MasseBebe, PointVieBebe, ReserveEnergieBebe, GenreEnfant(), Position);
+            var position = new PositionNaissance(Position).PositionEnfant();
+            return new Loup(0, MasseBebe, PointVieBebe, ReserveEnergieBebe, GenreEnfant(), position);
         }
     }
 }

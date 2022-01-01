@@ -3,21 +3,21 @@
   <Class Name="projet.Herbivore" Collapsed="true">
     <Position X="4.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Herbivore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Carnivore" Collapsed="true">
     <Position X="6.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Carnivore.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Ecosysteme" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAgAAAQAAAAIAAAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>CIAAAAAAAAAAAAAhAAAQAAAAIAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Ecosysteme.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -25,35 +25,35 @@
   <Class Name="projet.Plante" Collapsed="true">
     <Position X="2.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAgAAAgAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <HashCode>ACAUAgAAAgAAAAAAABAAAAAAAAAAAAAAAEAAABgAAAA=</HashCode>
       <FileName>Plante.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Implementation.Animaux.Carnivores.Loup" Collapsed="true">
     <Position X="6.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAQAAAACQAAEQAAIAAAAAAACAABAAgAEAAABABIBAA=</HashCode>
+      <HashCode>CAAAAAAACQAAEYAAAAAAAAAACAAAAAAAEAAABAAIBAA=</HashCode>
       <FileName>Implementation\Animaux\Carnivores\Loup.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Implementation.Animaux.Herbivores.Mouton" Collapsed="true">
     <Position X="4.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CIAQAAAAiQAAEQAAIAAAAAAACAABAAgAEAAABABIBAA=</HashCode>
+      <HashCode>CAAAAAAACQAAEYAAAAAAAAAACAAAAAAAEAAABAAIBAA=</HashCode>
       <FileName>Implementation\Animaux\Herbivores\Mouton.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Animal" Collapsed="true">
     <Position X="5.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CMAAoIAAAQSBFQAAIQAAAAECCAABAAAQEAABBABIBAA=</HashCode>
+      <HashCode>iMAAoIAAAQSBBIAAARAAAAECAAAAAAgQEAABBABIBAA=</HashCode>
       <FileName>Animal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.Element" Collapsed="true">
     <Position X="6" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAgkUAAAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAABAAAAAAAAgkUAAAAQAAAAABIAAAAAAAAAAAAA=</HashCode>
       <FileName>Element.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -61,18 +61,18 @@
   <Class Name="projet.EtreVivant" Collapsed="true">
     <Position X="3.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAQAAAAiAAAEIAAIAAAAAAABAAAAAhAAAAAAIAAAAA=</HashCode>
+      <HashCode>AKAQAACACAAAEYAAIBAAAAAADAAAAAgAAAAAAIAAAAA=</HashCode>
       <FileName>EtreVivant.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="projet.Implementation.Organiques.DechetOrganique" Collapsed="true">
-    <Position X="6.75" Y="2.25" Width="1.5" />
+  <Class Name="projet.Implementation.Organiques.DechetOrganique">
+    <Position X="6.75" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Implementation\Organiques\DechetOrganique.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="projet.Implementation.Organiques.Viande" Collapsed="true">
+  <Class Name="projet.Implementation.Organiques.Viande">
     <Position X="9.25" Y="2.25" Width="1.5" />
     <InheritanceLine Type="projet.Element" FixedToPoint="true">
       <Path>
@@ -87,11 +87,12 @@
       <FileName>Implementation\Organiques\Viande.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="projet.Position" Collapsed="true">
+  <Class Name="projet.PositionNaissance" Collapsed="true">
     <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAABgAAAAYAA=</HashCode>
-      <FileName>Position.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PositionNaissance.cs</FileName>
+      <NewMemberFileName>Position.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="projet.NotificationArgs" Collapsed="true">
@@ -111,7 +112,7 @@
   <Interface Name="IFouillable" Collapsed="true">
     <Position X="11.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Ecosysteme.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -132,7 +133,7 @@
   <Enum Name="projet.CycleDeVie" Collapsed="true">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAIAAIQAAAAAgBAAAAAgAAAABAABAAAA=</HashCode>
+      <HashCode>ACAQAAAAAAAAAIAAAQAAAAAgBAAAAAgAAAABAABAAAA=</HashCode>
       <FileName>CycleDeVie.cs</FileName>
     </TypeIdentifier>
   </Enum>

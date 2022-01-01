@@ -4,7 +4,7 @@ namespace projet.Implementation.Organiques
 {
     public class DechetOrganique : Element
     {
-        public DechetOrganique(double age, double masse, Position position) : base( age, masse, position)
+        public DechetOrganique(double age, double masse, ILocalisation position) : base( age, masse, position)
         {
         }
 

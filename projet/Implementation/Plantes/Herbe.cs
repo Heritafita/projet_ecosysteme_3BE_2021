@@ -26,7 +26,7 @@ namespace projet.Implementation.Plantes
 
 
 
-        public Herbe(double age, double masse, double PointVie, int ReserveEnergie, double zoneRacine, double zoneSemis, Position position) :
+        public Herbe(double age, double masse, double PointVie, int ReserveEnergie, double zoneRacine, double zoneSemis, ILocalisation position) :
             base( age, masse, PointVie, ReserveEnergie, zoneRacine, zoneSemis, position)
         {
         }
@@ -35,12 +35,12 @@ namespace projet.Implementation.Plantes
 
         protected override void SeReproduire()
         {
-            
-            var positionEnfant = PositionEnfant();
+
+            var positionEnfant =new PositionPlante (Position).PositionEnfant();
 
             if (IsInZoneSemis(positionEnfant) && Age >= AgeMur)
             {
-                Console.WriteLine("test");
+                
                 var enfant = new Herbe( 0, MasseBebe, PointVieBebe, ReserveEnergieBebe, ZoneRacineBebe, ZoneSemis, positionEnfant);
                 Ecosysteme.Notify(this, new NotificationArgs { CycleDeVie = CycleDeVie.DonnerNaissance, Element = enfant });
             }

@@ -2,6 +2,6 @@
 {
     public interface ILocalizable
     {
-        Position Position { get; set; }
+        ILocalisation Position { get; set; }
     }
 }

@@ -28,15 +28,15 @@ namespace projet
         protected abstract int PeriodeDefecation { get; }
 
         public readonly Genre genre;
-        public Animal(double age, double masse, double PointVie, int ReserveEnergie, Genre genre, Position position) :
+        public Animal(double age, double masse, double PointVie, int ReserveEnergie, Genre genre, ILocalisation position) :
         base(age, masse, PointVie, ReserveEnergie, position)
         {
             this.genre = genre;
         }
 
-        protected bool IsInZoneVision(Position position) => IsWithinDistance(ZoneVision, position);
+        protected bool IsInZoneVision(ILocalisation position) => Position.IsWithinDistance(ZoneVision, position);
 
-        protected bool IsInZoneContact(Position position) => IsWithinDistance(ZoneContact, position);
+        protected bool IsInZoneContact(ILocalisation position) => Position.IsWithinDistance(ZoneContact, position);
 
         internal void Defequer(object sender, EventArgs args)
         {
