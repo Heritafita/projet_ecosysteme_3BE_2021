@@ -91,7 +91,7 @@ namespace projet
             Random rd = new Random();
             var genre = new List<Genre> { Genre.Male, Genre.Femelle };
             int index = rd.Next(genre.Count);
-            return (Genre) index;
+            return (Genre)index;
         }
         public override void Simuler()
         {
@@ -159,6 +159,6 @@ namespace projet
         }
 
         protected override void Manger(Type type) => Manger(type, (element) => IsInZoneVision(element.Position));
-            
+
     }
 }

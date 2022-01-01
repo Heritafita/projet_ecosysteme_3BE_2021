@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace projet 
+﻿namespace projet
 {
-   public interface IRacineLocalisation 
+    public interface IRacineLocalisation
     {
         ILocalisation PositionEnfant();
 

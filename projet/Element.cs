@@ -6,16 +6,16 @@ namespace projet
 
         protected Element(double age, double masse, ILocalisation position)
         {
-          
+
             Position = position;
             Age = age;
             Masse = masse;
 
         }
 
-      
 
-        public readonly Guid Name = Guid.NewGuid() ;
+
+        public readonly Guid Name = Guid.NewGuid();
         public ILocalisation Position { get; set; }
         public double Masse { get; set; }
         public double Age { get; set; }

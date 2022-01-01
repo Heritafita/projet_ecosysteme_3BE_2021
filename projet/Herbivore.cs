@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace projet
+﻿namespace projet
 {
     abstract class Herbivore : Animal
     {

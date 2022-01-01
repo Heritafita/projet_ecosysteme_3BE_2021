@@ -16,7 +16,7 @@ namespace projet
 
         protected abstract double TempsPerteDeVie { get; }
 
-        public EtreVivant( double age, double masse, double PointVie, int ReserveEnergie, ILocalisation position) : base( age, masse, position)
+        public EtreVivant(double age, double masse, double PointVie, int ReserveEnergie, ILocalisation position) : base(age, masse, position)
         {
             this.PointVie = PointVie;
             this.ReserveEnergie = ReserveEnergie;
@@ -77,7 +77,7 @@ namespace projet
             var aliment = Ecosysteme.ChercheUn(type, predicate);
             if (aliment is null)
                 return;
-            
+
             Ecosysteme.Notify(this, notification: new NotificationArgs { CycleDeVie = CycleDeVie.SeNourir, Element = aliment });
         }
 

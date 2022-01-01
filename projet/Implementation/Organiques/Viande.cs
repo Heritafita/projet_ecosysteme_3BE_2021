@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace projet.Implementation.Organiques
+﻿namespace projet.Implementation.Organiques
 {
     internal class Viande : Element
     {
@@ -8,7 +6,7 @@ namespace projet.Implementation.Organiques
         const double TempsPourrir = 10;
 
 
-        public Viande( double age, double masse, ILocalisation position) : base( age, masse, position)
+        public Viande(double age, double masse, ILocalisation position) : base(age, masse, position)
         {
 
         }

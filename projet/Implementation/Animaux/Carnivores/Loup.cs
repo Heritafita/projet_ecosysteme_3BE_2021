@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace projet.Implementation.Animaux.Carnivores
+﻿namespace projet.Implementation.Animaux.Carnivores
 {
     internal class Loup : Carnivore
     {
@@ -27,7 +24,7 @@ namespace projet.Implementation.Animaux.Carnivores
 
 
 
-        public Loup( double age, double masse, double PointVie, int ReserveEnergie, Genre genre, ILocalisation position) : base(age, masse, PointVie, ReserveEnergie, genre, position)
+        public Loup(double age, double masse, double PointVie, int ReserveEnergie, Genre genre, ILocalisation position) : base(age, masse, PointVie, ReserveEnergie, genre, position)
         {
         }
 

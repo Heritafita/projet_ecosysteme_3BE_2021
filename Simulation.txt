@@ -1,7 +1,0 @@
-- Créer forme de vie pré-définie & random & long (+ delay)
-- Une forme de vie qui n'a plus de point de vie meurt. Les animaux deviennent de la viande. Les plantes deviennent des déchets organiques.
-- 
-
-
-- Commande Nadja
-- facture Valise Luc

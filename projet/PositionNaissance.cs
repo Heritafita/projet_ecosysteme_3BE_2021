@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace projet
 {
@@ -19,7 +17,7 @@ namespace projet
             Random rnd = new Random();
             int x = rnd.Next(-1, 1);
             int y = rnd.Next(-1, 1);
-            
+
             return new Position(_position.X + x, _position.Y + y);
         }
     }

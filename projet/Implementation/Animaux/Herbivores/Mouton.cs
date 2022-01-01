@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace projet.Implementation.Animaux.Herbivores
+﻿namespace projet.Implementation.Animaux.Herbivores
 {
     internal class Mouton : Herbivore
     {
@@ -27,7 +24,7 @@ namespace projet.Implementation.Animaux.Herbivores
 
 
 
-        public Mouton( double age, double masse, double PointVie, int ReserveEnergie, Genre Sexe, ILocalisation position) :
+        public Mouton(double age, double masse, double PointVie, int ReserveEnergie, Genre Sexe, ILocalisation position) :
             base(age, masse, PointVie, ReserveEnergie, Sexe, position)
         {
         }

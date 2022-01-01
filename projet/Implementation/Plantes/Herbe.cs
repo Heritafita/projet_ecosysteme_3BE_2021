@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace projet.Implementation.Plantes
+﻿namespace projet.Implementation.Plantes
 {
     public class Herbe : Plante
     {
@@ -20,14 +18,14 @@ namespace projet.Implementation.Plantes
 
         protected override double ZoneRacineBebe => 0.2;
 
-       
+
 
         protected override double AgeMur => 5;
 
 
 
         public Herbe(double age, double masse, double PointVie, int ReserveEnergie, double zoneRacine, double zoneSemis, ILocalisation position) :
-            base( age, masse, PointVie, ReserveEnergie, zoneRacine, zoneSemis, position)
+            base(age, masse, PointVie, ReserveEnergie, zoneRacine, zoneSemis, position)
         {
         }
 
@@ -36,12 +34,12 @@ namespace projet.Implementation.Plantes
         protected override void SeReproduire()
         {
 
-            var positionEnfant =new PositionPlante (Position).PositionEnfant();
+            var positionEnfant = new PositionPlante(Position).PositionEnfant();
 
             if (IsInZoneSemis(positionEnfant) && Age >= AgeMur)
             {
-                
-                var enfant = new Herbe( 0, MasseBebe, PointVieBebe, ReserveEnergieBebe, ZoneRacineBebe, ZoneSemis, positionEnfant);
+
+                var enfant = new Herbe(0, MasseBebe, PointVieBebe, ReserveEnergieBebe, ZoneRacineBebe, ZoneSemis, positionEnfant);
                 Ecosysteme.Notify(this, new NotificationArgs { CycleDeVie = CycleDeVie.DonnerNaissance, Element = enfant });
             }
 

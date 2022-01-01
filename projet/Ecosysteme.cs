@@ -6,7 +6,7 @@ using System.Linq;
 
 
 namespace projet
-{ 
+{
     public class Ecosysteme : ISimulateur, IFouillable, INotifiable
     {
         private readonly IAfficheur _afficheur;
@@ -20,15 +20,15 @@ namespace projet
         public void AjouterElement(IElement element)
         {
             element.Ecosysteme = this;
-            Elements.Add(element);            
-            _afficheur.Afficher($"Rajout ({element.GetType().Name}), Nombre d'éléments dans écosystème = {Elements.Count}", ConsoleColor.DarkGreen);            
+            Elements.Add(element);
+            _afficheur.Afficher($"Rajout ({element.GetType().Name}), Nombre d'éléments dans écosystème = {Elements.Count}", ConsoleColor.DarkGreen);
         }
         private void SupprimerElement(IElement element)
         {
             if (element is EtreVivant etreVivant)
                 etreVivant.IsVivant = false;
 
-            if(element is Animal animal)
+            if (element is Animal animal)
                 animal.FinirCycle();
 
             Elements.Remove(element);
@@ -64,8 +64,8 @@ namespace projet
             if (notification.CycleDeVie == CycleDeVie.Defequer)
             {
                 if (sender is Animal animal)
-                {                    
-                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);                    
+                {
+                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);
 
                 }
 
@@ -76,7 +76,7 @@ namespace projet
                 if (sender is EtreVivant etreVivant)
                 {
                     _afficheur.Afficher($"{etreVivant.Name} ({etreVivant.GetType().Name}) a perdu une vie, Point de vie actuelle = {etreVivant.PointVie} {etreVivant.Position}", ConsoleColor.DarkYellow);
-                    
+
                 }
 
             }
@@ -85,8 +85,8 @@ namespace projet
             {
 
                 if (sender is EtreVivant etrevivant)
-                {                    
-                    _afficheur.Afficher($"({etrevivant.GetType().Name}) {etrevivant.Name} a genere PointVie, PointVie = {etrevivant.PointVie}, Energie restant= {etrevivant.ReserveEnergie}  { etrevivant.Position}", ConsoleColor.Gray);                    
+                {
+                    _afficheur.Afficher($"({etrevivant.GetType().Name}) {etrevivant.Name} a genere PointVie, PointVie = {etrevivant.PointVie}, Energie restant= {etrevivant.ReserveEnergie}  { etrevivant.Position}", ConsoleColor.Gray);
                 }
 
 
@@ -99,7 +99,7 @@ namespace projet
                 if (sender is Plante || sender is Viande)
                 {
 
-                    DechetOrganique dechetOrganique = new DechetOrganique( 0, sender.Masse, sender.Position);                 
+                    DechetOrganique dechetOrganique = new DechetOrganique(0, sender.Masse, sender.Position);
 
                     _afficheur.Afficher($"({sender.GetType().Name}) {sender.Name} s'est tranformé en dechet organique {sender.Position}", ConsoleColor.DarkYellow);
                     _afficheur.Afficher($"Dechet organique {dechetOrganique.Name} a ete cree, position : {dechetOrganique.Position}", ConsoleColor.DarkYellow);
@@ -115,7 +115,7 @@ namespace projet
 
                 if (sender is Animal animal)
                 {
-                    Viande viande = new Viande( 0, animal.Masse, animal.Position);                    
+                    Viande viande = new Viande(0, animal.Masse, animal.Position);
                     _afficheur.Afficher($"({animal.GetType().Name}) {animal.Name} n'est plus en vie et transformé en {viande.GetType().Name} {viande.Name} {viande.Position} ", ConsoleColor.DarkYellow);
                     AjouterElement(viande);
                 }
@@ -137,8 +137,8 @@ namespace projet
                 }
 
                 if (sender is Plante PlanteMangeur && notification.Element is DechetOrganique dechetAliment)
-                {                    
-                    _afficheur.Afficher($"({dechetAliment.GetType().Name}) {dechetAliment.Name} a ete mangé par {PlanteMangeur.GetType().Name} {PlanteMangeur.Name} {PlanteMangeur.Position}", ConsoleColor.DarkMagenta);                    
+                {
+                    _afficheur.Afficher($"({dechetAliment.GetType().Name}) {dechetAliment.Name} a ete mangé par {PlanteMangeur.GetType().Name} {PlanteMangeur.Name} {PlanteMangeur.Position}", ConsoleColor.DarkMagenta);
                     SupprimerElement(dechetAliment);
                     PlanteMangeur.PointVie += 1;
                 }
@@ -165,14 +165,14 @@ namespace projet
                 if (sender is Animal mere && notification.Element is Animal enfant)
 
                 {
-                    enfant.IsEnfant = true;                    
-                    _afficheur.Afficher($"La mere ({mere.GetType().Name}) {mere.genre} {enfant.Name} a donne naissance\n Le bebe {enfant.GetType().Name} {enfant.genre} {enfant.Name} est ne " , ConsoleColor.DarkYellow);                    
+                    enfant.IsEnfant = true;
+                    _afficheur.Afficher($"La mere ({mere.GetType().Name}) {mere.genre} {enfant.Name} a donne naissance\n Le bebe {enfant.GetType().Name} {enfant.genre} {enfant.Name} est ne ", ConsoleColor.DarkYellow);
                 }
 
                 if (sender is Plante MerePlante && notification.Element is Plante enfantPlante)
 
-                {                    
-                    _afficheur.Afficher($"({MerePlante.GetType().Name}) {MerePlante.Name} s'est repandu {MerePlante.Position} \n ({enfantPlante.GetType().Name})  {enfantPlante.Name} a pousse {enfantPlante.Position}", ConsoleColor.DarkYellow);                    
+                {
+                    _afficheur.Afficher($"({MerePlante.GetType().Name}) {MerePlante.Name} s'est repandu {MerePlante.Position} \n ({enfantPlante.GetType().Name})  {enfantPlante.Name} a pousse {enfantPlante.Position}", ConsoleColor.DarkYellow);
                 }
                 AjouterElement(notification.Element);
             }
@@ -181,7 +181,7 @@ namespace projet
         public IElement ChercheUn(Type type, Predicate<IElement> predicate)
             => Chercher(type, predicate).FirstOrDefault();
 
-       
+
     }
 }
 
@@ -199,7 +199,7 @@ public interface IFouillable
 
 public class Note : IAfficheur
 {
-    public  void Afficher(string message, ConsoleColor color = ConsoleColor.White)
+    public void Afficher(string message, ConsoleColor color = ConsoleColor.White)
     {
         Console.ForegroundColor = color;
         Console.WriteLine(message);

@@ -8,7 +8,7 @@ namespace projet
 {
     class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
             Console.WriteLine("SIMULATEUR ECOSYSTEM");
             var ecosysteme = new Ecosysteme(new Note());
@@ -30,9 +30,9 @@ namespace projet
 
             ecosysteme.AjouterElement(new Viande(1, 10, new Position(20, 12)));
 
-            
+
 
             ecosysteme.Simuler();
         }
-    }   
+    }
 }
