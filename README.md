@@ -1,4 +1,4 @@
-# projet_ecosysteme_3BE_2021
+# projet_ecosysteme_3BE_2021 HERITAFITA Samson & ACHOUR Souha
 Simulation Ecosysteme
 
 
