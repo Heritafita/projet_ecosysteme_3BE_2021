@@ -8,15 +8,27 @@ Description (avec justifications) d'au moins deux principes SOLID utilisés dans
 - D : principe d’inversion de dépendance. A travers l’interface « ILocalisation », on peut subsitituer  faciliment la classe postion en créant un autre classe qui implémente « ILocalisation » sans impacter la classe « Element ». Pour montrer cela, on a créé volontairement la classe « PositionAlternative » (utilisé dans la ligne n°16 du « main ») qui est équivalent à la classe « Position ». On peut substituer les 2 sans impacter le reste du code.
 
 
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
+```mermaid
+classDiagram
+      Animal <|-- Duck
+      Animal <|-- Fish
+      Animal <|-- Zebra
+      Animal : +int age
+      Animal : +String gender
+      Animal: +isMammal()
+      Animal: +mate()
+      class Duck{
+          +String beakColor
+          +swim()
+          +quack()
+      }
+      class Fish{
+          -int sizeInFeet
+          -canEat()
+      }
+      class Zebra{
+          +bool is_wild
+          +run()
+      }
+```
 
