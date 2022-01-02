@@ -9,6 +9,7 @@ Description (avec justifications) d'au moins deux principes SOLID utilisés dans
 
 
 
+```mermaid
 classDiagram
       Animal <|-- Duck
       Animal <|-- Fish
@@ -30,3 +31,4 @@ classDiagram
           +bool is_wild
           +run()
       }
+```
