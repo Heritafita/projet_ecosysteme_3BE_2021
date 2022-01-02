@@ -9,4 +9,4 @@ Description (avec justifications) d'au moins deux principes SOLID utilisés dans
 
 
 
-![capture](https://github.com/Heritafita/projet_ecosysteme_3BE_2021/blob/master/Capture.PNG)
+![capture](https://github.com/Heritafita/projet_ecosysteme_3BE_2021/blob/master/ClassDiagram1.png)
