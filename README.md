@@ -10,4 +10,4 @@ Description (avec justifications) d'au moins deux principes SOLID utilisés dans
 
 DIAGRAMME DE CLASSES :
 
-![capture](https://github.com/Heritafita/projet_ecosysteme_3BE_2021/blob/master/DiagrammeClasseProjet.PNG)
+![capture](https://github.com/Heritafita/projet_ecosysteme_3BE_2021/blob/master/diagrammedeclasseprojet.PNG)
