@@ -61,15 +61,7 @@ namespace projet
 
         public void Notify(Element sender, NotificationArgs notification)
         {
-            if (notification.CycleDeVie == CycleDeVie.Defequer)
-            {
-                if (sender is Animal animal)
-                {
-                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);
-
-                }
-
-            }
+           
 
             if (notification.CycleDeVie == CycleDeVie.PerdreVie)
             {
@@ -142,11 +134,19 @@ namespace projet
                     SupprimerElement(dechetAliment);
                     PlanteMangeur.PointVie += 1;
                 }
-
-
+               
 
             }
 
+            if (notification.CycleDeVie == CycleDeVie.Defequer)
+            {
+                if (sender is Animal animal)
+                {
+                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);
+
+                }
+
+            }
             if (notification.CycleDeVie == CycleDeVie.SeReproduire)
             {
                 if (sender is Animal animalMale && notification.Element is Animal animalfemelle)
