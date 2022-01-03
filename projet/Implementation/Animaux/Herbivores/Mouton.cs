@@ -22,7 +22,7 @@
 
         protected override double AgeAdulte => 1.5;
 
-
+        public override double MasseDefecation => 0.4;
 
         public Mouton(double age, double masse, double PointVie, int ReserveEnergie, Genre Sexe, ILocalisation position) :
             base(age, masse, PointVie, ReserveEnergie, Sexe, position)

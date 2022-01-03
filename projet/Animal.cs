@@ -21,6 +21,7 @@ namespace projet
         protected Timer DefecationTimer;
 
         protected abstract double ZoneVision { get; }
+        public abstract double MasseDefecation { get; }
         protected abstract double ZoneContact { get; }
         protected abstract double AgeAdulte { get; }
         protected abstract int TempsDeGestation { get; }
@@ -53,11 +54,11 @@ namespace projet
             if (genre == Genre.Femelle)
                 return;
 
-            var animals = Ecosysteme.Chercher(GetType(), element => genre != ((Animal)element).genre && IsInZoneContact(element.Position) && !IsEnfant && !IsFatigue && !((Animal)element).IsEngestation);
-            if (animals.Any())
+            var animal = Ecosysteme.ChercheUn(GetType(), element => genre != ((Animal)element).genre && IsInZoneContact(element.Position) && !IsEnfant && !IsFatigue && !((Animal)element).IsEngestation);
+            if (animal !=null)
             {
                 IsImmobile = true;
-                Ecosysteme.Notify(this, new NotificationArgs { CycleDeVie = CycleDeVie.SeReproduire, Element = animals.First() });
+                Ecosysteme.Notify(this, new NotificationArgs { CycleDeVie = CycleDeVie.SeReproduire, Element = animal});
                 IsFatigue = true;
                 IsImmobile = false;
             }
@@ -145,15 +146,13 @@ namespace projet
         {
             if (DefecationTimer != null)
             {
-                DefecationTimer.Stop();
-                //DefecationTimer.Elapsed -= Defequer;
+                DefecationTimer.Stop();                
                 DefecationTimer.Dispose();
             }
 
             if (PerteVieTimer != null)
             {
-                PerteVieTimer.Stop();
-                //PerteVieTimer.Elapsed -= PerdreVie;
+                PerteVieTimer.Stop();               
                 PerteVieTimer.Dispose();
             }
         }

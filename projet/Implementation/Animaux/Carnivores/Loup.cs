@@ -22,7 +22,7 @@
 
         protected override double AgeAdulte => 2;
 
-
+        public override double MasseDefecation => 0.5;
 
         public Loup(double age, double masse, double PointVie, int ReserveEnergie, Genre genre, ILocalisation position) : base(age, masse, PointVie, ReserveEnergie, genre, position)
         {

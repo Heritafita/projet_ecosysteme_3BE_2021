@@ -59,17 +59,10 @@ namespace projet
             static bool defaultPredicate(Type a, IElement b) => a.IsAssignableFrom(b.GetType());
         }
 
+       
         public void Notify(Element sender, NotificationArgs notification)
         {
-            if (notification.CycleDeVie == CycleDeVie.Defequer)
-            {
-                if (sender is Animal animal)
-                {
-                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);
-
-                }
-
-            }
+            
 
             if (notification.CycleDeVie == CycleDeVie.PerdreVie)
             {
@@ -144,6 +137,18 @@ namespace projet
                 }
 
 
+
+            if (notification.CycleDeVie == CycleDeVie.Defequer)
+            {
+                if (sender is Animal animal)
+                {
+                    _afficheur.Afficher($"{animal.Name} ({animal.GetType().Name}) a lache du dechet organique, position : {animal.Position}", ConsoleColor.DarkCyan);
+                    DechetOrganique defec = new DechetOrganique(0, animal.MasseDefecation, animal.Position);
+                    //AjouterElement(defec);
+
+                }
+
+            }
 
             }
 
